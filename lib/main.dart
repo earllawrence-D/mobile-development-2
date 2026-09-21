@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'models/app_state.dart';
+import 'models/network_diagnostics.dart';
 import 'models/network_monitor.dart';
 import 'screens/home_dashboard.dart';
 import 'screens/activity_one_screen.dart';
 import 'screens/activity_two_screen.dart';
+import 'screens/network_diagnostic_dashboard.dart';
 import 'screens/network_monitor_screen.dart';
 import 'screens/settings_screen.dart';
 
@@ -18,6 +20,11 @@ void main() {
         // stream once at app startup and keeps ticking/queuing/resuming
         // simulated requests no matter which screen is on top.
         ChangeNotifierProvider(create: (_) => NetworkMonitor()),
+        // The diagnostic tool starts its background measurement cycle the
+        // moment the app boots and broadcasts the classified health tier
+        // (Excellent / Fair / Poor / Degraded / Offline) to the entire
+        // app, which is what drives the adaptive UI everywhere.
+        ChangeNotifierProvider(create: (_) => NetworkDiagnostics()),
       ],
       child: const LabCompilerApp(),
     ),
@@ -53,6 +60,8 @@ class LabCompilerApp extends StatelessWidget {
         '/activity-one': (context) => const ActivityOneScreen(),
         '/activity-two': (context) => const ActivityTwoScreen(),
         '/network-monitor': (context) => const NetworkMonitorScreen(),
+        '/network-diagnostics': (context) =>
+            const NetworkDiagnosticDashboard(),
         '/settings': (context) => const SettingsScreen(),
       },
     );

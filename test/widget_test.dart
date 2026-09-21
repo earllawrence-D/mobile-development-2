@@ -1,30 +1,34 @@
-// This is a basic Flutter widget test.
+// Smoke test for a self-contained widget.
 //
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+// The whole app is deliberately *not* pumped here: LabCompilerApp reads global
+// providers, and NetworkDiagnostics starts real HTTP probes as soon as it is
+// constructed, which would make a widget test slow and network-dependent.
+// The pure threshold / loss / lag logic is covered by
+// test/diagnostic_report_test.dart instead.
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:lab_compiler_app/main.dart';
+import 'package:lab_compiler_app/widgets/trial_counter.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('TrialCounter increments and resets its local count',
+      (WidgetTester tester) async {
+    // Build the widget inside a MaterialApp (Theme/Scaffold needed by Card).
+    await tester.pumpWidget(
+      const MaterialApp(home: Scaffold(body: TrialCounter())),
+    );
 
-    // Verify that our counter starts at 0.
+    // Local state starts at zero and the label is rendered.
+    expect(find.text('Trial Count'), findsOneWidget);
     expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    await tester.tap(find.text('Record Trial'));
     await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+
+    await tester.tap(find.text('Reset'));
+    await tester.pump();
+    expect(find.text('0'), findsOneWidget);
   });
 }
+

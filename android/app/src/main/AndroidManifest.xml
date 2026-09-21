@@ -1,4 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Real network access for the diagnostic dashboard and the network
+         monitor. Flutter adds the INTERNET permission to DEBUG/PROFILE builds
+         automatically (see android/app/src/debug/AndroidManifest.xml), so
+         without the two lines below a RELEASE build cannot open a single
+         socket: every ping/transfer probe fails and the dashboard is stuck on
+         "Offline" with no ping or lag numbers. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- connectivity_plus (Network Monitor) reads the active interface. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:label="lab_compiler_app"
         android:name="${applicationName}"

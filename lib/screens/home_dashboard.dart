@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../models/app_state.dart';
 import '../widgets/activity_menu_card.dart';
+import '../widgets/health_status_pill.dart';
 
 class HomeDashboard extends StatelessWidget {
   const HomeDashboard({super.key});
@@ -16,6 +17,12 @@ class HomeDashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          // Global connection-health badge. It watches NetworkDiagnostics
+          // itself, so every new diagnostic cycle updates it app-wide,
+          // and tapping it deep-links into the diagnostic dashboard.
+          HealthStatusPill(
+            onTap: () => Navigator.pushNamed(context, '/network-diagnostics'),
+          ),
           IconButton(
             icon: const Icon(Icons.settings),
             tooltip: 'Settings',
@@ -54,6 +61,8 @@ class HomeDashboard extends StatelessWidget {
                             Expanded(child: _activityTwoCard(context)),
                             const SizedBox(width: 16),
                             Expanded(child: _networkMonitorCard(context)),
+                            const SizedBox(width: 16),
+                            Expanded(child: _diagnosticsCard(context)),
                           ],
                         )
                       : Column(
@@ -63,6 +72,8 @@ class HomeDashboard extends StatelessWidget {
                             _activityTwoCard(context),
                             const SizedBox(height: 12),
                             _networkMonitorCard(context),
+                            const SizedBox(height: 12),
+                            _diagnosticsCard(context),
                           ],
                         ),
                   const SizedBox(height: 24),
@@ -122,6 +133,16 @@ class HomeDashboard extends StatelessWidget {
       icon: Icons.network_check_outlined,
       color: Colors.deepOrange,
       onTap: () => Navigator.pushNamed(context, '/network-monitor'),
+    );
+  }
+
+  Widget _diagnosticsCard(BuildContext context) {
+    return ActivityMenuCard(
+      title: 'Network Diagnostics',
+      subtitle: 'Live speed/ping tiers & adaptive media demo',
+      icon: Icons.speed,
+      color: Colors.deepPurple,
+      onTap: () => Navigator.pushNamed(context, '/network-diagnostics'),
     );
   }
 }

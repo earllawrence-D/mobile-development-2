@@ -7,6 +7,7 @@ import 'models/network_monitor.dart';
 import 'screens/home_dashboard.dart';
 import 'screens/activity_one_screen.dart';
 import 'screens/activity_two_screen.dart';
+import 'screens/local_mesh_chat_screen.dart';
 import 'screens/network_diagnostic_dashboard.dart';
 import 'screens/network_monitor_screen.dart';
 import 'screens/settings_screen.dart';
@@ -62,6 +63,7 @@ class LabCompilerApp extends StatelessWidget {
         '/network-monitor': (context) => const NetworkMonitorScreen(),
         '/network-diagnostics': (context) =>
             const NetworkDiagnosticDashboard(),
+        '/mesh-chat': (context) => const LocalMeshChatScreen(),
         '/settings': (context) => const SettingsScreen(),
       },
     );

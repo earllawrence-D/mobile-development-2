@@ -9,6 +9,21 @@
     <!-- connectivity_plus (Network Monitor) reads the active interface. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
+    <!-- Local Mesh Chat (Nearby Connections): discovery + P2P links over
+         Bluetooth and Wi-Fi. Android 12+ uses the BLUETOOTH_* runtime
+         permissions, Android 13+ adds NEARBY_WIFI_DEVICES; older versions
+         use the legacy Bluetooth/location permissions (capped by maxSdk). -->
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" android:usesPermissionFlags="neverForLocation"/>
+
     <application
         android:label="lab_compiler_app"
         android:name="${applicationName}"

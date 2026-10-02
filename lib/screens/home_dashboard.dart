@@ -33,10 +33,21 @@ class HomeDashboard extends StatelessWidget {
       body: SafeArea(
         child: LayoutBuilder(
           // LayoutBuilder + a width breakpoint lets the dashboard switch
-          // between a stacked Column (phones) and a side-by-side Row
+          // between a stacked Column (phones) and a multi-column Wrap
           // (tablets/desktop) without ever overflowing.
           builder: (context, constraints) {
             final isWide = constraints.maxWidth > 600;
+            final cards = [
+              _activityOneCard(context),
+              _activityTwoCard(context),
+              _networkMonitorCard(context),
+              _diagnosticsCard(context),
+              _meshChatCard(context),
+            ];
+            final columns = constraints.maxWidth > 900 ? 3 : 2;
+            final cardWidth =
+                (constraints.maxWidth - 40 - 16 * (columns - 1)) / columns;
+
             return SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -52,28 +63,23 @@ class HomeDashboard extends StatelessWidget {
                   const SizedBox(height: 28),
                   Text('Activities', style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 12),
+                  // Five cards no longer fit in one Row, so wide screens use
+                  // a Wrap of fixed-width cards (2 or 3 columns) instead.
                   isWide
-                      ? Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      ? Wrap(
+                          spacing: 16,
+                          runSpacing: 16,
                           children: [
-                            Expanded(child: _activityOneCard(context)),
-                            const SizedBox(width: 16),
-                            Expanded(child: _activityTwoCard(context)),
-                            const SizedBox(width: 16),
-                            Expanded(child: _networkMonitorCard(context)),
-                            const SizedBox(width: 16),
-                            Expanded(child: _diagnosticsCard(context)),
+                            for (final card in cards)
+                              SizedBox(width: cardWidth, child: card),
                           ],
                         )
                       : Column(
                           children: [
-                            _activityOneCard(context),
-                            const SizedBox(height: 12),
-                            _activityTwoCard(context),
-                            const SizedBox(height: 12),
-                            _networkMonitorCard(context),
-                            const SizedBox(height: 12),
-                            _diagnosticsCard(context),
+                            for (var i = 0; i < cards.length; i++) ...[
+                              if (i > 0) const SizedBox(height: 12),
+                              cards[i],
+                            ],
                           ],
                         ),
                   const SizedBox(height: 24),
@@ -143,6 +149,16 @@ class HomeDashboard extends StatelessWidget {
       icon: Icons.speed,
       color: Colors.deepPurple,
       onTap: () => Navigator.pushNamed(context, '/network-diagnostics'),
+    );
+  }
+
+  Widget _meshChatCard(BuildContext context) {
+    return ActivityMenuCard(
+      title: 'Local Mesh Chat',
+      subtitle: 'Serverless peer-to-peer messaging, no internet needed',
+      icon: Icons.hub_outlined,
+      color: Colors.green,
+      onTap: () => Navigator.pushNamed(context, '/mesh-chat'),
     );
   }
 }

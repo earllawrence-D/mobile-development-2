@@ -124,7 +124,7 @@ class HomeDashboard extends StatelessWidget {
 
   Widget _activityTwoCard(BuildContext context) {
     return ActivityMenuCard(
-      title: 'Activity 2: Data Notes',
+      title: 'Activity 1.1: Data Notes',
       subtitle: 'Jot down quick lab notes',
       icon: Icons.edit_note_outlined,
       color: Colors.teal,
@@ -134,7 +134,7 @@ class HomeDashboard extends StatelessWidget {
 
   Widget _networkMonitorCard(BuildContext context) {
     return ActivityMenuCard(
-      title: 'Network Monitor',
+      title: 'Activity 2: Network Monitor',
       subtitle: 'Live Wi-Fi/Cellular status & handover recovery',
       icon: Icons.network_check_outlined,
       color: Colors.deepOrange,
@@ -144,7 +144,7 @@ class HomeDashboard extends StatelessWidget {
 
   Widget _diagnosticsCard(BuildContext context) {
     return ActivityMenuCard(
-      title: 'Network Diagnostics',
+      title: 'Activity 3: Network Diagnostics ',
       subtitle: 'Live speed/ping tiers & adaptive media demo',
       icon: Icons.speed,
       color: Colors.deepPurple,
@@ -154,7 +154,7 @@ class HomeDashboard extends StatelessWidget {
 
   Widget _meshChatCard(BuildContext context) {
     return ActivityMenuCard(
-      title: 'Local Mesh Chat',
+      title: 'Activity 4: Local Mesh Chat',
       subtitle: 'Serverless peer-to-peer messaging, no internet needed',
       icon: Icons.hub_outlined,
       color: Colors.green,

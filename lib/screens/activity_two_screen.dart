@@ -34,7 +34,7 @@ class _ActivityTwoScreenState extends State<ActivityTwoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Activity 2: Data Notes')),
+      appBar: AppBar(title: const Text(' Data Notes')),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20),

@@ -26,7 +26,7 @@ class NetworkDiagnosticDashboard extends StatelessWidget {
     final tier = diagnostics.tier;
 
     return Scaffold(
-      appBar: AppBar(title: const Text(' Network Dashboard')),
+      appBar: AppBar(title: const Text('Network Dashboard')),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(20),

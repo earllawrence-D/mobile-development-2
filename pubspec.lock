@@ -304,7 +304,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.15.0"
-<<<<<<< HEAD
   mgrs_dart:
     dependency: transitive
     description:
@@ -313,8 +312,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-=======
->>>>>>> 3f12a7cd8ab490a77e8c10441db8dcabb2ac92f8
   nearby_connections:
     dependency: "direct main"
     description:
@@ -347,7 +344,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
-<<<<<<< HEAD
   path_provider_linux:
     dependency: transitive
     description:
@@ -372,8 +368,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
-=======
->>>>>>> 3f12a7cd8ab490a77e8c10441db8dcabb2ac92f8
   permission_handler:
     dependency: "direct main"
     description:
@@ -394,10 +388,10 @@ packages:
     dependency: transitive
     description:
       name: permission_handler_apple
-      sha256: "066bbbc60031b63b916a3871e7bb4b6a8c5e7cec8146dafec53d1da304eff0a5"
+      sha256: b69e6b8300f9584af5ab81b41cdaa544e1b45e6fca0a30b0f9a9a120d90fc8a5
       url: "https://pub.dev"
     source: hosted
-    version: "9.6.2"
+    version: "9.6.4"
   permission_handler_html:
     dependency: transitive
     description:
@@ -579,7 +573,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.3"
-<<<<<<< HEAD
   typed_data:
     dependency: transitive
     description:
@@ -604,8 +597,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.6.0"
-=======
->>>>>>> 3f12a7cd8ab490a77e8c10441db8dcabb2ac92f8
   vector_math:
     dependency: transitive
     description:
@@ -664,8 +655,4 @@ packages:
     version: "3.1.4"
 sdks:
   dart: ">=3.6.0 <4.0.0"
-<<<<<<< HEAD
   flutter: ">=3.27.0"
-=======
-  flutter: ">=3.24.0"
->>>>>>> 3f12a7cd8ab490a77e8c10441db8dcabb2ac92f8

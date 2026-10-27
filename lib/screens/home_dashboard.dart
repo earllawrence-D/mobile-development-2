@@ -43,7 +43,6 @@ class HomeDashboard extends StatelessWidget {
               _networkMonitorCard(context),
               _diagnosticsCard(context),
               _meshChatCard(context),
-<<<<<<< HEAD
               _geofenceCard(context),
             ];
             final columns = constraints.maxWidth > 900 ? 3 : 2;
@@ -163,7 +162,7 @@ class HomeDashboard extends StatelessWidget {
       onTap: () => Navigator.pushNamed(context, '/mesh-chat'),
     );
   }
-<<<<<<< HEAD
+
     Widget _geofenceCard(BuildContext context) {
     return ActivityMenuCard(
       title: 'Activity 5: Geofence Map',
@@ -173,6 +172,4 @@ class HomeDashboard extends StatelessWidget {
       onTap: () => Navigator.pushNamed(context, '/geofence-map'),
     );
   }
-=======
->>>>>>> 3f12a7cd8ab490a77e8c10441db8dcabb2ac92f8
 }

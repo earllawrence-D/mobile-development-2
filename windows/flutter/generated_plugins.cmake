@@ -4,10 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   connectivity_plus
-<<<<<<< HEAD
   geolocator_windows
-=======
->>>>>>> 3f12a7cd8ab490a77e8c10441db8dcabb2ac92f8
   permission_handler_windows
 )
 

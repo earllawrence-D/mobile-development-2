@@ -11,6 +11,7 @@ import 'screens/local_mesh_chat_screen.dart';
 import 'screens/network_diagnostic_dashboard.dart';
 import 'screens/network_monitor_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/geofence_map_screen.dart';
 
 void main() {
   runApp(
@@ -65,6 +66,7 @@ class LabCompilerApp extends StatelessWidget {
             const NetworkDiagnosticDashboard(),
         '/mesh-chat': (context) => const LocalMeshChatScreen(),
         '/settings': (context) => const SettingsScreen(),
+        '/geofence-map': (context) => const GeofenceMapScreen(),
       },
     );
   }

@@ -43,6 +43,7 @@ class HomeDashboard extends StatelessWidget {
               _networkMonitorCard(context),
               _diagnosticsCard(context),
               _meshChatCard(context),
+              _geofenceCard(context),
             ];
             final columns = constraints.maxWidth > 900 ? 3 : 2;
             final cardWidth =
@@ -159,6 +160,16 @@ class HomeDashboard extends StatelessWidget {
       icon: Icons.hub_outlined,
       color: Colors.green,
       onTap: () => Navigator.pushNamed(context, '/mesh-chat'),
+    );
+  }
+
+    Widget _geofenceCard(BuildContext context) {
+    return ActivityMenuCard(
+      title: 'Activity 5: Geofence Map',
+      subtitle: 'Custom map markers with live enter/exit geofence tracking',
+      icon: Icons.add_location_alt_outlined,
+      color: Colors.redAccent,
+      onTap: () => Navigator.pushNamed(context, '/geofence-map'),
     );
   }
 }

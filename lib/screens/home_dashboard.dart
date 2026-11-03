@@ -38,8 +38,7 @@ class HomeDashboard extends StatelessWidget {
           builder: (context, constraints) {
             final isWide = constraints.maxWidth > 600;
             final cards = [
-              _activityOneCard(context),
-              _activityTwoCard(context),
+              
               _networkMonitorCard(context),
               _diagnosticsCard(context),
               _meshChatCard(context),
@@ -54,6 +53,7 @@ class HomeDashboard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                 
                   Text(
                     'Welcome back, ${appState.profileName}!',
                     style: Theme.of(context)
@@ -113,25 +113,7 @@ class HomeDashboard extends StatelessWidget {
     );
   }
 
-  Widget _activityOneCard(BuildContext context) {
-    return ActivityMenuCard(
-      title: 'Activity 1: Titration Log',
-      subtitle: 'Record trial counts and observations',
-      icon: Icons.science_outlined,
-      color: Colors.indigo,
-      onTap: () => Navigator.pushNamed(context, '/activity-one'),
-    );
-  }
 
-  Widget _activityTwoCard(BuildContext context) {
-    return ActivityMenuCard(
-      title: 'Activity 1.1: Data Notes',
-      subtitle: 'Jot down quick lab notes',
-      icon: Icons.edit_note_outlined,
-      color: Colors.teal,
-      onTap: () => Navigator.pushNamed(context, '/activity-two'),
-    );
-  }
 
   Widget _networkMonitorCard(BuildContext context) {
     return ActivityMenuCard(

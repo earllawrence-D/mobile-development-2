@@ -5,8 +5,7 @@ import 'models/app_state.dart';
 import 'models/network_diagnostics.dart';
 import 'models/network_monitor.dart';
 import 'screens/home_dashboard.dart';
-import 'screens/activity_one_screen.dart';
-import 'screens/activity_two_screen.dart';
+
 import 'screens/local_mesh_chat_screen.dart';
 import 'screens/network_diagnostic_dashboard.dart';
 import 'screens/network_monitor_screen.dart';
@@ -59,8 +58,7 @@ class LabCompilerApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomeDashboard(),
-        '/activity-one': (context) => const ActivityOneScreen(),
-        '/activity-two': (context) => const ActivityTwoScreen(),
+
         '/network-monitor': (context) => const NetworkMonitorScreen(),
         '/network-diagnostics': (context) =>
             const NetworkDiagnosticDashboard(),

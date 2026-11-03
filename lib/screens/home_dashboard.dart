@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../models/app_state.dart';
 import '../widgets/activity_menu_card.dart';
-import '../widgets/health_status_pill.dart';
+import '../widgets/welcome_card.dart';
 
 class HomeDashboard extends StatelessWidget {
   const HomeDashboard({super.key});
@@ -15,21 +15,6 @@ class HomeDashboard extends StatelessWidget {
     final appState = context.watch<AppState>();
 
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          // Global connection-health badge. It watches NetworkDiagnostics
-          // itself, so every new diagnostic cycle updates it app-wide,
-          // and tapping it deep-links into the diagnostic dashboard.
-          HealthStatusPill(
-            onTap: () => Navigator.pushNamed(context, '/network-diagnostics'),
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings),
-            tooltip: 'Settings',
-            onPressed: () => Navigator.pushNamed(context, '/settings'),
-          ),
-        ],
-      ),
       body: SafeArea(
         child: LayoutBuilder(
           // LayoutBuilder + a width breakpoint lets the dashboard switch
@@ -38,7 +23,6 @@ class HomeDashboard extends StatelessWidget {
           builder: (context, constraints) {
             final isWide = constraints.maxWidth > 600;
             final cards = [
-              
               _networkMonitorCard(context),
               _diagnosticsCard(context),
               _meshChatCard(context),
@@ -53,18 +37,18 @@ class HomeDashboard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 
-                  Text(
-                    'Welcome back, ${appState.profileName}!',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall
-                        ?.copyWith(fontWeight: FontWeight.bold),
+                  // Greeting + connection pill + settings, grouped in one card.
+                  WelcomeCard(
+                    profileName: appState.profileName,
+                    onPillTap: () =>
+                        Navigator.pushNamed(context, '/network-diagnostics'),
+                    onSettingsTap: () =>
+                        Navigator.pushNamed(context, '/settings'),
                   ),
                   const SizedBox(height: 28),
                   Text('Activities', style: Theme.of(context).textTheme.titleLarge),
-                  const SizedBox(height: 12),
-                  // Five cards no longer fit in one Row, so wide screens use
+                  const SizedBox(height: 11),
+                  // Cards no longer fit in one Row, so wide screens use
                   // a Wrap of fixed-width cards (2 or 3 columns) instead.
                   isWide
                       ? Wrap(
@@ -113,8 +97,6 @@ class HomeDashboard extends StatelessWidget {
     );
   }
 
-
-
   Widget _networkMonitorCard(BuildContext context) {
     return ActivityMenuCard(
       title: 'Activity 2: Network Monitor',
@@ -145,7 +127,7 @@ class HomeDashboard extends StatelessWidget {
     );
   }
 
-    Widget _geofenceCard(BuildContext context) {
+  Widget _geofenceCard(BuildContext context) {
     return ActivityMenuCard(
       title: 'Activity 5: Geofence Map',
       subtitle: 'Custom map markers with live enter/exit geofence tracking',

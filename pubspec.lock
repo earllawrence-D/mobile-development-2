@@ -303,7 +303,7 @@ packages:
       sha256: "23f08335362185a5ea2ad3a4e597f1375e78bce8a040df5c600c8d3552ef2394"
       url: "https://pub.dev"
     source: hosted
-    version: "1.15.0"
+    version: "1.17.0"
   mgrs_dart:
     dependency: transitive
     description:
@@ -343,7 +343,7 @@ packages:
       sha256: "75cca69d1490965be98c73ceaea117e8a04dd21217b37b292c9ddbec0d955bc5"
       url: "https://pub.dev"
     source: hosted
-    version: "1.9.0"
+    version: "1.9.1"
   path_provider_linux:
     dependency: transitive
     description:
@@ -572,7 +572,7 @@ packages:
       sha256: "8161c84903fd860b26bfdefb7963b3f0b68fee7adea0f59ef805ecca346f0c7a"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.3"
+    version: "0.7.10"
   typed_data:
     dependency: transitive
     description:
@@ -654,5 +654,5 @@ packages:
     source: hosted
     version: "3.1.4"
 sdks:
-  dart: ">=3.6.0 <4.0.0"
+  dart: ">=3.9.0-0 <4.0.0"
   flutter: ">=3.27.0"
